@@ -17,5 +17,3 @@ tone_analysis = tone_analyzer.tone(
     {'text': text},
     'application/json').get_result()
 print(json.dumps(tone_analysis, indent=2))
-
-print("Hello")
