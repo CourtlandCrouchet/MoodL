@@ -83,7 +83,7 @@ DATABASES = {
     'default' :{
         'ENGINE' : 'django.db.backends.mysql',
         'NAME' : 'moodl',
-        'USER' : 'keming',
+        'USER' : 'kemin',
         'PASSWORD' : '970721',
         'HOST' : 'localhost',
         'PORT' : ''
