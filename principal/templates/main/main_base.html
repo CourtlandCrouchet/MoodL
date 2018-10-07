@@ -87,7 +87,7 @@
 </div>
 <div align="center" class="container" style="padding-top: 5%">
     {% if request.user.get_username %}
-        <h2 style="width: 50%"  id="header_menu">WELCOME TO THE FIRST VIDEO OF DCR DJANGO PROJECTS</h2>
+        <h2 style="width: 50%"  id="header_menu">YOU HAVE LOGGED INTO MOODL, WELCOME!</h2>
         <br><br>
         {% if request.user.groups.all.0 %}
     <h1 align="center" id="header_menu"> Permissions: </h1>
@@ -97,11 +97,12 @@
     {% include "account/login.html" %}
     {# include "utility/support.html"   #}
 
-    <nav class="navbar fixed-bottom navbar-light bg-faded">
+    <!--<nav class="navbar fixed-bottom navbar-light bg-faded">
         <div class="container" align="center">
             <span class="text-muted"> © 2017 - Site Built By David Castro Ruiz.  Performed with Django 1.10.5 </span>
         </div>
     </nav>
+    -->
 
     <script type="text/javascript">
         setTimeout(function () {
