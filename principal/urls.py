@@ -1,11 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
-app_name = 'principal'
 
 urlpatterns = [
 	
 	path('', views.main_base_view, name ='main_base'),
-	path('', views.login, name ='login')
+	path('login/', views.login, name ='login')
 
 ]
