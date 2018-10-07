@@ -1,14 +1,17 @@
 from django.shortcuts import render, render_to_response
 from django.template.context_processors import csrf
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
-from django.urls import reverse
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+
 
 def main_base_view(request):
     dictionary = dict(request=request)
     dictionary.update(csrf(request))
     return render_to_response('main/main_base.html', dictionary)
+
 
 def login(request):
     if request.method == 'POST':
@@ -17,14 +20,14 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             auth_login(request=request, user=user)
-            return HttpResponse(reverse('principal:main_base'))
+            dictionary = dict(request=request)
+            dictionary.update(csrf(request))
+            return render_to_response('main/main_base.html', dictionary)
         else:
             msg_to_html = custom_message('Invalid Credentials', TagType.danger)
             dictionary = dict(request=request, messages = msg_to_html)
             dictionary.update(csrf(request))
         return render_to_response('main/main_base.html', dictionary)
-
-from django.contrib.auth.models import User
 
 
 # this def is if you want to change the user's password
@@ -32,6 +35,13 @@ def update_pwd(username, pwd):
     user_model = User.objects.get(username=username)
     user_model.set_password(pwd)
     user_model.save()
+
+
+def logout_view(request):
+    logout(request)
+    dictionary = dict(request=request)
+    dictionary.update(csrf(request))
+    return render_to_response('main/main_base.html', dictionary)
 
 
 class Messages:

@@ -4,14 +4,18 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from principal.views import logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #:8000/home/
     path('home/', include('home.urls')),
     path('', include('principal.urls')),
     path('login/', auth_views.LoginView, {'next_page': '/'}, name='login'),
+    #ctrl+d copy and past the line
+    path('logout/', logout_view, name='logout'),
+
 ]
+
 
 
 if settings.DEBUG:
