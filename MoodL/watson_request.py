@@ -8,6 +8,12 @@ tone_analyzer = ToneAnalyzerV3(
     url = 'https://gateway.watsonplatform.net/tone-analyzer/api'
 )
 
+def get_tone(text):
+    tone_analysis = tone_analyzer.tone(
+        {'text': text},
+        'application/json').getresult()
+    return 
+
 text = 'Team, I know that times are tough! Product '\
     'sales have been disappointing for the past three '\
     'quarters. We have a competitive product, but we '\
