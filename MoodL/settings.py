@@ -81,14 +81,23 @@ WSGI_APPLICATION = 'MoodL.wsgi.application'
    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     #}
 #}
+#DATABASES = {
+    #'default' :{
+       # 'ENGINE' : 'django.db.backends.mysql',
+       #'USER' : 'kemin',
+       # 'PASSWORD' : '970721',
+       # 'HOST' : 'localhost',
+       # 'PORT' : ''
+    #}
+#}
 DATABASES = {
     'default' :{
-        'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'moodl',
-        'USER' : 'kemin',
-        'PASSWORD' : '970721',
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+        'NAME' : 'postgres',
+        'USER' : 'postgres',
+        'PASSWORD' : 'password',
         'HOST' : 'localhost',
-        'PORT' : ''
+        'PORT' : '5432'
     }
 }
 
