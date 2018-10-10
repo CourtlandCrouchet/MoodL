@@ -11,15 +11,27 @@ tone_analyzer = ToneAnalyzerV3(
 def get_tone(text):
     tone_analysis = tone_analyzer.tone(
         {'text': text},
-        'application/json').getresult()
-    return 
+        'application/json').get_result()
+    emotions = tone_analysis["document_tone"]["tone_categories"]
+    mood_dict = {
+        "anger" : emotions[0]["tones"][0]["score"],
+        "disgust" : emotions[0]["tones"][1]["score"],
+        "fear" : emotions[0]["tones"][2]["score"],
+        "joy" : emotions[0]["tones"][3]["score"],
+        "sadness" : emotions[0]["tones"][4]["score"],
+        "analytical" : emotions[1]["tones"][0]["score"],
+        "confident" : emotions[1]["tones"][1]["score"],
+        "tentative" : emotions[1]["tones"][2]["score"],
+        "openness" : emotions[2]["tones"][0]["score"],
+        "conscientiousness" : emotions[2]["tones"][1]["score"],
+        "extraversion" : emotions[2]["tones"][2]["score"],
+        "agreeableness" : emotions[2]["tones"][3]["score"],
+        "emotional range" : emotions[2]["tones"][4]["score"]
+    }
+    return mood_dict
 
 text = 'Team, I know that times are tough! Product '\
     'sales have been disappointing for the past three '\
     'quarters. We have a competitive product, but we '\
     'need to do a better job of selling it!'
-
-tone_analysis = tone_analyzer.tone(
-    {'text': text},
-    'application/json').get_result()
-print(json.dumps(tone_analysis, indent=2))
+print(get_tone(text))
