@@ -4,7 +4,7 @@ from django.db import models
 class Entries(models.Model):
     user_ID = models.IntegerField(default=0)
     entry_text = models.CharField(max_length=4000)
-    submission_date = models.DateTimeField('date written')
+    submission_date = models.DateTimeField('date published')
     anger = models.DecimalField(decimal_places=6,max_digits=7)
     disgust = models.DecimalField(decimal_places=6,max_digits=7)
     fear = models.DecimalField(decimal_places=6,max_digits=7)
@@ -18,3 +18,5 @@ class Entries(models.Model):
     extraversion = models.DecimalField(decimal_places=6,max_digits=7)
     agreeableness = models.DecimalField(decimal_places=6,max_digits=7)
     emotional_range = models.DecimalField(decimal_places=6,max_digits=7)
+    def __str__(self):
+        return self.entry_text
