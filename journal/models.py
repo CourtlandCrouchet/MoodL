@@ -20,3 +20,5 @@ class Entries(models.Model):
     emotional_range = models.DecimalField(decimal_places=6,max_digits=7)
     def __str__(self):
         return self.entry_text
+    def get_absolute_url(self):
+        return reverse('entries-detail', kwargs={'pk': self.pk})
