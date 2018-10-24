@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
 
@@ -21,17 +22,15 @@ def get_entry(request):
         # check whether it's valid:
         if form.is_valid():
         # process the data in form.cleaned_data as required
-            # ...
+            entry_text = form.cleaned_data['entry_form']
+            new_entry = Entries.create(entry_text)
             # redirect to a new URL:
-            return HttpResponseRedirect('/submitted/')
+            return HttpResponseRedirect('submitted')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = EntryForm()
 
     return render(request, 'journal/new_entry.html', {'form': form})
-
-def post_new(request):
-    form = EntryForm()
-    #if form.is_valid():
-    #    return HttpResponseRedirect('/submitted/')
-    return render(request, 'post_edit.html', {'form': form})
+def submitted(request):
+    template = loader.get_template('journal/get_entry/submitted.html')
+    return HttpResponse(render(request, 'journal/get_entry/submitted.html'))
