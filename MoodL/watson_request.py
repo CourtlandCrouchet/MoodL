@@ -34,4 +34,3 @@ text = 'Team, I know that times are tough! Product '\
     'sales have been disappointing for the past three '\
     'quarters. We have a competitive product, but we '\
     'need to do a better job of selling it!'
-print(get_tone(text))

@@ -1,0 +1,10 @@
+{% if latest_entries_list %}
+  <ul>
+  {% for entry in latest_entries_list %}
+    <li><a href="/journal/{{ entry.id }}/">{{ entry.entry_text }}
+    </a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No entries are available.</p>
+  {% endif %}

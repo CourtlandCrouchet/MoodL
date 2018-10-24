@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView, {'next_page': '/'}, name='login'),
     #ctrl+d copy and past the line
     path('logout/', logout_view, name='logout'),
+    path('journal/', include('journal.urls')),
 
 ]
 
