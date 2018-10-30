@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.template.context_processors import csrf
 from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth import authenticate
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 
@@ -28,6 +28,23 @@ def login(request):
             dictionary = dict(request=request, messages = msg_to_html)
             dictionary.update(csrf(request))
         return render_to_response('main/main_base.html', dictionary)
+
+
+def signup(request):
+    if request.method == 'POST':
+        username = request.POST.get('name')
+        pass_1 = request.POST.get('password1')
+        pass_2 = request.POST.get('password2')
+        if pass_1 == pass_2:
+            user = User.objects.create_user(username=username, password=pass_1)
+            dictionary = dict(request=request)
+            dictionary.update(csrf(request))
+            return render_to_response('main/main_base.html', dictionary)
+        else:
+            msg_to_html = custom_message('Invalid Credentials', TagType.danger)
+            dictionary = dict(request=request, messages=msg_to_html)
+            dictionary.update(csrf(request))
+        return render_to_response('account/signup.html', dictionary)
 
 
 # this def is if you want to change the user's password
