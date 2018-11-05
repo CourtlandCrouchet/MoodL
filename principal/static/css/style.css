@@ -1,0 +1,43 @@
+/*
+.image{
+  src: url("../images/MoodLTransparent.png");
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.image-blurred-edge {
+    background-image: url("../images/GreenLake.jpg");
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    /* you need to match the shadow color to your background or image border for the desired effect
+    box-shadow: 0 0 8px 8px white inset;
+}
+.logo{
+  background-image: url("../images/MoodLTransparent.png");
+  width = auto;
+  height = auto;
+}*/
+body{
+  background-image: url("../images/Background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+.parent {
+  position: absolute;
+  top:-10px;
+  right: 70px;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

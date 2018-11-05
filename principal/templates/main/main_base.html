@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
+
     <link rel="shortcut icon" href="https://nedbatchelder.com/pix/django-icon-256.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
             integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
             crossorigin="anonymous"></script>
@@ -14,13 +18,8 @@
             integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    {% load staticfiles %}
-
     <meta charset="UTF-8">
     <title>MoodL</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'util/css/style.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
     <style>
         h2 {
             color: #7c795d;
@@ -109,5 +108,9 @@
             $('#div_msg').fadeOut('fast');
         }, 5000);
     </script>
+    <div class="parent">
+      <img src="../../static/images/GreenLake.jpg" alt="Lake" style="width:80%;height:90%;">
+      <img class = "logo" src="../../static/images/MoodLTransparent.png" alt="Logo" style="width:240px;height:150px;">
+    </div>
 </body>
 </html>
