@@ -2,12 +2,15 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-
     <link rel="shortcut icon" href="https://nedbatchelder.com/pix/django-icon-256.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+    <!-- For JS file to rotate background pics
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="../../static/js/homepage.js"></script>
+    -->
+    <link rel="stylesheet" href="../../static/css/homeStyle.css">
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
             integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
             crossorigin="anonymous"></script>
@@ -108,9 +111,21 @@
             $('#div_msg').fadeOut('fast');
         }, 5000);
     </script>
-    <div class="parent">
+<!-- Random background-->
+    <script type="text/javascript">
+      var dir = '../../static/images/';
+      var size = 3;
+      var dict = {
+        1: "redSky.jpg",
+        2: "cat.jpg",
+        3: "yellowLeaves.jpg"};
+      var random= Math.floor(Math.random() * size) + 1;
+      document.body.style.backgroundImage="url(" + dir + dict[random] + ")";
+    </script>
+  <!--  <div class="parent">
       <img src="../../static/images/GreenLake.jpg" alt="Lake" style="width:80%;height:90%;">
       <img class = "logo" src="../../static/images/MoodLTransparent.png" alt="Logo" style="width:240px;height:150px;">
-    </div>
+    </div>-->
+    <img src="../../static/images/cat.jpg" width="305" height="312" id="myPicture" alt="some image">
 </body>
 </html>
