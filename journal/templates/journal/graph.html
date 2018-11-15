@@ -1,16 +1,54 @@
-<script src="../../../static/util/js/chart.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  ?
+  var anger = {{moods.anger}};
+  var disgust = {{moods.disgust}};
+  var fear = {{moods.fear}};
+  var joy = {{moods.joy}};
+  var sadness = {{moods.sadness}};
 </script>
-<ul>
-    <li>Anger: {{ vals.anger }}</li>
-    <li>Disgust: {{ vals.disgust }}</li>
-    <li>Fear: {{ vals.fear }}</li>
-    <li>Joy: {{ vals.joy }}</li>
-    <li>Sadness: {{vals.sadness}}</li>
-    <li>Analytical: {{ vals.analytical }}</li>
-    <li>Confident: {{ vals.confident }}</li>
-    <li>Tentative: {{ vals.tentative }}</li>
-    <li>Openness: {{ vals.openness }}</li>
-    <li>Conscientiousness: {{ vals.conscientiousness }}</li>
-</ul>
+<canvas id="chart"></canvas>
+<script>
+  $( document ).ready(function() {
+    var anger = {{moods.anger}};
+    var disgust = {{moods.disgust}};
+    var fear = {{moods.fear}};
+    var joy = {{moods.joy}};
+    var sadness = {{moods.sadness}};
+
+    var ctx = document.getElementById("chart").getContext("2d");
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+       labels: ['Anger','Disgust','Fear','Joy','Sadness'],
+       datasets: [{
+           label: "My First dataset",
+           backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(0,255,0)',
+            'rgba(0,0,0,.4)',
+            'rgb(255,255,0)',
+            'rgba(79,179,249,.6)',
+            'rgb(0,255,255)',
+            'rgb(255,0,255)',
+          ],
+           borderColor: [
+             'rgb(255, 99, 132)',
+             'rgb(0,255,0)',
+             'rgb(0,0,0)',
+             'rgb(255,255,0)',
+             'rgb(79,179,249)',
+           ],
+           borderWidth: 2,
+           data: [anger,disgust,fear,joy,sadness],
+       }]
+   },
+
+   // Configuration options go here
+   options: {}
+ });
+});
+</script>
