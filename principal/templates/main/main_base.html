@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded" style="background-color: mediumseagreen">
+<nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded" style="background-color: transparent">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -114,18 +114,28 @@
 <!-- Random background-->
     <script type="text/javascript">
       var dir = '../../static/images/';
-      var size = 3;
+      var size = 7;
       var dict = {
-        1: "redSky.jpg",
-        2: "cat.jpg",
-        3: "yellowLeaves.jpg"};
+        1: "yellowLeaves.jpg",
+        2: "rainDrops.jpg",
+        3: "redEggs.jpg",
+        4: "foggyTrees.jpg",
+        5: "lavender.jpg",
+        6: "redFlower.jpg",
+        7: "succulents.jpg"};
       var random= Math.floor(Math.random() * size) + 1;
       document.body.style.backgroundImage="url(" + dir + dict[random] + ")";
     </script>
   <!--  <div class="parent">
       <img src="../../static/images/GreenLake.jpg" alt="Lake" style="width:80%;height:90%;">
       <img class = "logo" src="../../static/images/MoodLTransparent.png" alt="Logo" style="width:240px;height:150px;">
-    </div>-->
-    <img src="../../static/images/cat.jpg" width="305" height="312" id="myPicture" alt="some image">
+    </div>
+  -->
+    <div class="transBox">
+      <img src="../../static/images/MoodLTransparent.png" width="305" height="190" id="myPicture" alt="some image">
+      <p> Mood + Log </p>
+      <p>  = </p>
+      <p> Your personal journal that not only remembers what you said, but helps you understand it too </p>
+    </div>
 </body>
 </html>
