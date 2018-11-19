@@ -6,9 +6,28 @@
   var fear = {{moods.fear}};
   var joy = {{moods.joy}};
   var sadness = {{moods.sadness}};
+  var data = [];
+  var c = 0;
 </script>
 <canvas id="chart"></canvas>
+<button id="line"
+<ul>
+  {% for instance in data %}
+    {% for field, value in instance.fields.items %}
+      <!-- <li>{{ field }}: {{ value }}</li> -->
+      <script>
+        {% if field == "entry_text" or field == "submission_date" %}
+          data[c]="{{value}}";
+        {% else %}
+          data[c] = {{value}};
+        {% endif %}
+        c++;
+      </script>
+    {% endfor %}
+  {% endfor %}
+</ul>
 <script>
+  //console.log(data.toString());
   $( document ).ready(function() {
     var anger = {{moods.anger}};
     var disgust = {{moods.disgust}};
@@ -16,8 +35,9 @@
     var joy = {{moods.joy}};
     var sadness = {{moods.sadness}};
 
-    var ctx = document.getElementById("chart").getContext("2d");
-    var chart = new Chart(ctx, {
+    var chart = document.getElementById("chart");
+    var ctx = chart.getContext("2d");
+    var chartObj = new Chart(ctx, {
       // The type of chart we want to create
     type: 'bar',
 
@@ -27,11 +47,11 @@
        datasets: [{
            label: "My First dataset",
            backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(0,255,0)',
+            'rgba(255, 99, 132,.6)',
+            'rgba(0,255,0,.4)',
             'rgba(0,0,0,.4)',
-            'rgb(255,255,0)',
-            'rgba(79,179,249,.6)',
+            'rgba(255,255,0,.6)',
+            'rgba(79,179,249,1)',
             'rgb(0,255,255)',
             'rgb(255,0,255)',
           ],
@@ -40,15 +60,39 @@
              'rgb(0,255,0)',
              'rgb(0,0,0)',
              'rgb(255,255,0)',
-             'rgb(79,179,249)',
+             //'rgb(79,179,249)',
+             'rgb(0,0,0)',
            ],
            borderWidth: 2,
            data: [anger,disgust,fear,joy,sadness],
        }]
    },
 
-   // Configuration options go here
-   options: {}
  });
+ chart.onclick = function(evt) {
+   var activePoints = chartObj.getElementsAtEvent(evt);
+   if(activePoints[0]) {
+     var chartData = activePoints[0]['_chart'].config.data;
+     var idx = activePoints[0]['_index'];
+
+     var label = chartData.labels[idx];
+     var value = chartData.datasets[0].data[idx];
+
+     chartObj.destroy();
+     chartObj = new Chart(ctx, {
+       type: 'line',
+       data: {
+         labels: ['1,2,3,4,5,6,7'],
+         datasets: [{
+           label: 'line',
+           backgroundColor: ['rgb(0,0,0)'],
+           data: [1,2,3,4,5,6,7],
+         }]
+       },
+     });
+     barObj.update();
+   }
+ };
 });
+
 </script>

@@ -6,6 +6,8 @@ from django.shortcuts import render
 from .models import Entries
 from .forms import EntryForm
 
+from django.core import serializers
+
 def index(request):
     latest_entries_list = Entries.objects.order_by('-submission_date')[:5]
     template = loader.get_template('journal/index.html')
@@ -35,9 +37,11 @@ def submitted(request):
     template = loader.get_template('journal/get_entry/submitted.html')
     return HttpResponse(render(request, 'journal/get_entry/submitted.html'))
 def graph(request):
+    data = serializers.serialize("python",Entries.objects.filter(pk=7))
     moods = Entries.objects.get(pk=7)
     template = loader.get_template('journal/graph.html')
     context = {
         'moods': moods,
+        'data': data,
     }
     return HttpResponse(template.render(context, request))
