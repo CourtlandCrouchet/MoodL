@@ -36,17 +36,9 @@ def get_entry(request):
 def submitted(request):
     template = loader.get_template('journal/get_entry/submitted.html')
     return HttpResponse(render(request, 'journal/get_entry/submitted.html'))
-def graph(request):
-    data = serializers.serialize("python",Entries.objects.filter(pk = 7))
-    moods = Entries.objects.get(pk=7)
-    template = loader.get_template('journal/graph.html')
-    context = {
-        'moods': moods,
-        'data': data,
-    }
-    return HttpResponse(template.render(context, request))
 
-def spec_graph(request, id):
+
+def graph(request, id):
     data = serializers.serialize("python",Entries.objects.filter(pk = id))
     moods = Entries.objects.get(pk=id)
     template = loader.get_template('journal/graph.html')
