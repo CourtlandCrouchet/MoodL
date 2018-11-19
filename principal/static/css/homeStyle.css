@@ -1,0 +1,14 @@
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+div.transBox{
+  width: 450px;
+  height: 400px;
+  margin: auto;
+  margin-top: 0px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.85;
+}
