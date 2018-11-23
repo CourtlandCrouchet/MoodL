@@ -6,6 +6,8 @@ from django.shortcuts import render
 from .models import Entries
 from .forms import EntryForm
 
+from django.core import serializers
+
 def index(request):
     latest_entries_list = Entries.objects.order_by('-submission_date')[:5]
     template = loader.get_template('journal/index.html')
@@ -25,7 +27,7 @@ def get_entry(request):
             entry_text = form.cleaned_data['entry_form']
             new_entry = Entries.create(entry_text)
             # redirect to a new URL:
-            return HttpResponseRedirect('submitted')
+            return HttpResponseRedirect('graph/'+str(new_entry.id))
     # if a GET (or any other method) we'll create a blank form
     else:
         form = EntryForm()
@@ -34,3 +36,14 @@ def get_entry(request):
 def submitted(request):
     template = loader.get_template('journal/get_entry/submitted.html')
     return HttpResponse(render(request, 'journal/get_entry/submitted.html'))
+
+
+def graph(request, id):
+    data = serializers.serialize("python",Entries.objects.filter(pk = id))
+    moods = Entries.objects.get(pk=id)
+    template = loader.get_template('journal/graph.html')
+    context = {
+        'moods': moods,
+        'data': data,
+    }
+    return HttpResponse(template.render(context, request))
