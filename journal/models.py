@@ -3,7 +3,7 @@ from MoodL import watson_request
 import datetime
 # Create your models here.
 class Entries(models.Model):
-    user_ID = models.IntegerField(default=0)
+    user_ID = models.CharField(max_length = 100)
     entry_text = models.CharField(max_length=4000)
     submission_date = models.DateTimeField('date published')
     anger = models.DecimalField(decimal_places=6,max_digits=7)
@@ -41,9 +41,10 @@ class Entries(models.Model):
             self.emotional_range = self.mood_dict["emotional range"]
         return self
     @classmethod
-    def create(cls, text):
+    def create(cls, text, user_id):
         entry = cls(entry_text=text)
         entry.submission_date = datetime.datetime.now()
+        entry.user_ID = str(user_id)
         entry.analyze()
         entry.save()
         return entry

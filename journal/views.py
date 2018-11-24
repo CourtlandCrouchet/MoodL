@@ -25,7 +25,8 @@ def get_entry(request):
         if form.is_valid():
         # process the data in form.cleaned_data as required
             entry_text = form.cleaned_data['entry_form']
-            new_entry = Entries.create(entry_text)
+            user_id = request.user
+            new_entry = Entries.create(entry_text, user_id)
             # redirect to a new URL:
             return HttpResponseRedirect('graph/'+str(new_entry.id))
     # if a GET (or any other method) we'll create a blank form
@@ -34,8 +35,12 @@ def get_entry(request):
 
     return render(request, 'journal/new_entry.html', {'form': form})
 def submitted(request):
+    user_id = request.user
+    context = {
+        'user_id': user_id,
+    }
     template = loader.get_template('journal/get_entry/submitted.html')
-    return HttpResponse(render(request, 'journal/get_entry/submitted.html'))
+    return HttpResponse(template.render(context,request))
 
 
 def graph(request, id):
