@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#list of urls used in the journal module
 urlpatterns = [
 	path('', views.index, name ='index'),
     #path('create/', views.create, name='create'),
