@@ -8,7 +8,7 @@ from .forms import EntryForm
 
 from django.core import serializers
 
-def index(request):
+def index(request): #OBSOLETE, used for reference
     latest_entries_list = Entries.objects.order_by('-submission_date')[:5]
     template = loader.get_template('journal/index.html')
     context = {
@@ -25,7 +25,9 @@ def get_entry(request):
         if form.is_valid():
         # process the data in form.cleaned_data as required
             entry_text = form.cleaned_data['entry_form']
+            #user_id = user ID of the current session
             user_id = request.user
+            #Use Entries create method to analyze and store the Entry
             new_entry = Entries.create(entry_text, user_id)
             # redirect to a new URL:
             return HttpResponseRedirect('graph/'+str(new_entry.id))
@@ -34,7 +36,7 @@ def get_entry(request):
         form = EntryForm()
 
     return render(request, 'journal/new_entry.html', {'form': form})
-def submitted(request):
+def submitted(request): #OBSOLETE, used for testing
     user_id = request.user
     context = {
         'user_id': user_id,
@@ -43,7 +45,7 @@ def submitted(request):
     return HttpResponse(template.render(context,request))
 
 
-def graph(request, id):
+def graph(request, id): #OBSOLETE, used for testing
     data = serializers.serialize("python",Entries.objects.filter(pk = id))
     moods = Entries.objects.get(pk=id)
     template = loader.get_template('journal/graph.html')
