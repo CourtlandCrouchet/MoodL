@@ -1,7 +1,8 @@
 from django.db import models
 from MoodL import watson_request
 import datetime
-# Create your models here.
+# Main Entry model, contains creating user's ID, date of
+# submission, and all analyzed fields from IBM Tone Analyzer
 class Entries(models.Model):
     user_ID = models.CharField(max_length = 100)
     entry_text = models.CharField(max_length=4000)
@@ -19,13 +20,15 @@ class Entries(models.Model):
     extraversion = models.DecimalField(decimal_places=6,max_digits=7)
     agreeableness = models.DecimalField(decimal_places=6,max_digits=7)
     emotional_range = models.DecimalField(decimal_places=6,max_digits=7)
-    def __str__(self):
+    def __str__(self): #Stringify method returns entry text
         return self.entry_text
     def get_absolute_url(self):
         return reverse('entries-detail', kwargs={'pk': self.pk})
     def analyze(self):
-        if self.entry_text != "":
+        if self.entry_text != "": #if entry_text is not empty
+            #use IBM's Watson Tone Analyzer to analyze the entry text
             self.mood_dict = watson_request.get_tone(self.entry_text)
+            #populate database with entry's analytics
             self.anger = self.mood_dict["anger"]
             self.disgust = self.mood_dict["disgust"]
             self.fear = self.mood_dict["fear"]
@@ -40,11 +43,14 @@ class Entries(models.Model):
             self.agreeableness = self.mood_dict["agreeableness"]
             self.emotional_range = self.mood_dict["emotional range"]
         return self
+    #helper method for creating a new Entry object
+    #text = entry text
+    #user_id = user ID of the writer
     @classmethod
     def create(cls, text, user_id):
-        entry = cls(entry_text=text)
-        entry.submission_date = datetime.datetime.now()
-        entry.user_ID = str(user_id)
-        entry.analyze()
-        entry.save()
+        entry = cls(entry_text=text) #Set Entry's entry_text
+        entry.submission_date = datetime.datetime.now() #submission date = now
+        entry.user_ID = user_id #Save submitter's user ID
+        entry.analyze() #analyze entry
+        entry.save() #store Entry object to database
         return entry
