@@ -34,8 +34,15 @@ def get_entry(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = EntryForm()
-
-    return render(request, 'journal/new_entry.html', {'form': form})
+    user_id = request.user
+    data = serializers.serialize("python", Entries.objects.filter(pk = 7))
+    moods = Entries.objects.get(pk=7)
+    context = {
+        'form': form,
+        'data': data,
+        'moods': moods,
+    }
+    return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
     user_id = request.user
     context = {
