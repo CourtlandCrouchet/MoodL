@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7621e1f7-559d-4adc-a15d-19dedfeee838" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/principal/templates/account/signup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/principal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/principal/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/principal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/principal/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,26 +25,26 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="118" />
-          <entry key="py" value="1326" />
+          <entry key="py" value="1393" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="118" />
-          <entry key="Python" value="1326" />
+          <entry key="Python" value="1393" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="5" />
+          <entry key="html" value="7" />
           <entry key="py" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="5" />
+          <entry key="HTML" value="7" />
           <entry key="Python" value="16" />
         </counts>
       </usages-collector>
@@ -57,14 +55,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/principal/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+            <state relative-caret-position="323">
+              <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
-                <marker date="1543018930675" expanded="true" signature="1340:1341" ph="..." />
-                <marker date="1543018930675" expanded="true" signature="1346:2045" ph="..." />
-                <marker date="1543018930675" expanded="true" signature="2080:2194" ph="..." />
-                <marker date="1543018930675" expanded="true" signature="2416:2580" ph="..." />
+                <marker date="1543019557820" expanded="true" signature="1343:1344" ph="..." />
+                <marker date="1543019557820" expanded="true" signature="1349:2048" ph="..." />
+                <marker date="1543019557820" expanded="true" signature="2083:2197" ph="..." />
+                <marker date="1543019557820" expanded="true" signature="2419:2583" ph="..." />
               </folding>
             </state>
           </provider>
@@ -174,6 +172,27 @@
               <item name="MoodL" type="b2602c69:ProjectViewProjectNode" />
               <item name="MoodL" type="462c0819:PsiDirectoryNode" />
               <item name="journal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MoodL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MoodL" type="462c0819:PsiDirectoryNode" />
+              <item name="journal" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MoodL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MoodL" type="462c0819:PsiDirectoryNode" />
+              <item name="journal" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="journal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MoodL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MoodL" type="462c0819:PsiDirectoryNode" />
+              <item name="journal" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="journal" type="462c0819:PsiDirectoryNode" />
+              <item name="get_entry" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MoodL" type="b2602c69:ProjectViewProjectNode" />
@@ -302,9 +321,6 @@
     <entry file="file://$PROJECT_DIR$/journal/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/journal/templates/journal/new_entry.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/principal/templates/account/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -347,6 +363,12 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/journal/templates/journal/get_entry/submitted.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/journal/templates/journal/new_entry.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/journal/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -356,14 +378,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/principal/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+        <state relative-caret-position="323">
+          <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-            <marker date="1543018930675" expanded="true" signature="1340:1341" ph="..." />
-            <marker date="1543018930675" expanded="true" signature="1346:2045" ph="..." />
-            <marker date="1543018930675" expanded="true" signature="2080:2194" ph="..." />
-            <marker date="1543018930675" expanded="true" signature="2416:2580" ph="..." />
+            <marker date="1543019557820" expanded="true" signature="1343:1344" ph="..." />
+            <marker date="1543019557820" expanded="true" signature="1349:2048" ph="..." />
+            <marker date="1543019557820" expanded="true" signature="2083:2197" ph="..." />
+            <marker date="1543019557820" expanded="true" signature="2419:2583" ph="..." />
           </folding>
         </state>
       </provider>

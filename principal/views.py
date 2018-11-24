@@ -23,7 +23,7 @@ def login(request):
             auth_login(request=request, user=user)
             dictionary = dict(request=request)
             dictionary.update(csrf(request))
-            return render_to_response('main/main_base.html', dictionary)
+            return render_to_response('journal/new_entry.html', dictionary)
         else:
             msg_to_html = custom_message('Invalid Credentials', TagType.danger)
             dictionary = dict(request=request, messages = msg_to_html)
