@@ -19,6 +19,7 @@
     <pre>   <input id = "submit" type="submit" value="Submit Entry">
     </pre>
   </form>
+  <div id="calendar"></div>
 </div>
 <!-- Add an additional blue button style -->
 <style>
@@ -39,6 +40,15 @@ canvas {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
  <script>
+   function getMonthFromString(mon){
+
+      var d = Date.parse(mon + "1, 2012");
+      if(!isNaN(d)){
+         return new Date(d).getMonth() + 1;
+      }
+      return -1;
+    }
+
   $( document ).ready(function() {
     var anger = {{moods.anger}};
     var disgust = {{moods.disgust}};
@@ -102,6 +112,23 @@ var datepicker = new Datepickk();
 datepicker.inline = true;
 datepicker.container = document.getElementById("calendar");
 datepicker.show();
+datepicker.selectDate(new Date());
+datesArr = [];
+var i = 0;
+{% for val in dates %}
+  // console.log("date: " + "{{val.submission_date}}");
+  var dateStr = "{{ val.submission_date }}".replace(/,/g, '');
+  dateStr = dateStr.split(' ');
+  dateStr[0] = getMonthFromString(dateStr[0]);
+  datesArr[i] = new Date(dateStr[2]+'-'+dateStr[0]+'-'+dateStr[1]);
+  console.log(datesArr[i]);
+  i++;
+{% endfor %}
+datepicker.disabledDates = datesArr;
+datepicker.onSelect = function(checked){
+var state = (checked)?'selected':'unselected';
+alert(this.toLocaleDateString() + ' ' + state);
+};
 </script>
 </div>
 </body>

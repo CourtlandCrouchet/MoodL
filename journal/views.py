@@ -37,10 +37,12 @@ def get_entry(request):
     user_id = request.user
     data = serializers.serialize("python", Entries.objects.filter(pk = 18))
     moods = Entries.objects.get(pk=18)
+    dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
     context = {
         'form': form,
         'data': data,
         'moods': moods,
+        'dates': dates,
     }
     return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
