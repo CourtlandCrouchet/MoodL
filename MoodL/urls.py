@@ -14,7 +14,6 @@ urlpatterns = [
     #ctrl+d copy and past the line
     path('logout/', logout_view, name='logout'),
     path('journal/', include('journal.urls')),
-
 ]
 
 
