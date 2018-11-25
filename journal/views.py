@@ -35,8 +35,8 @@ def get_entry(request):
     else:
         form = EntryForm()
     user_id = request.user
-    data = serializers.serialize("python", Entries.objects.filter(pk = 7))
-    moods = Entries.objects.get(pk=7)
+    data = serializers.serialize("python", Entries.objects.filter(user_ID = user_id))
+    moods = Entries.objects.get(pk=0)
     context = {
         'form': form,
         'data': data,
@@ -45,18 +45,22 @@ def get_entry(request):
     return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
     user_id = request.user
+    data = serializers.serialize("python", Entries.objects.filter(user_ID = user_id))
     context = {
         'user_id': user_id,
+        'data': data,
     }
     template = loader.get_template('journal/get_entry/submitted.html')
     return HttpResponse(template.render(context,request))
 
 
 def graph(request, id): #OBSOLETE, used for testing
-    data = serializers.serialize("python",Entries.objects.filter(pk = id))
+    user_id = request.user
+    data = serializers.serialize("python",Entries.objects.filter(user_ID = user_id))
     moods = Entries.objects.get(pk=id)
     template = loader.get_template('journal/graph.html')
     context = {
+        'user_id': user_id,
         'moods': moods,
         'data': data,
     }

@@ -1,2 +1,8 @@
 <h1>YOU HAVE SUBMITTED YOUR ENTRY. CARRY ON.</h1>
 <p>{{ user_id }}</p>
+
+{% for instance in data %}
+  {% for field, value in instance.fields.items %}
+    <p>{{field}}: {{value}}</p>
+  {% endfor %}
+{% endfor %}
