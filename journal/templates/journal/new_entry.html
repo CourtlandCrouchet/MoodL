@@ -1,10 +1,22 @@
-<form action="/journal/get_entry/" method="post">
-  <!--<label for="new_entry">How's it going? </label>
+{% load staticfiles %}
+<head>
+<link rel="stylesheet" href="{% static 'css/journal.css' %}">
+<link rel="stylesheet" href="{% static 'js/journal.js' %}">
+<!-- <img src="{% static "images/rocks.jpg" %}" alt="My image">
+ -->
+</head>
+<body>
+<!-- wrapper to get calendar and entry side by side-->
+ <div id="wrapper">
+<form action="/journal/get_entry/" method="post" id="form">
+  <!--<label for="new_entry">How's it going?<br> </label>
   <input id="new_entry" type="text" name="new_entry" value="{{
   current_entry }}">-->
   {% csrf_token %}
   {{ form }}
+  <br><pre>
   <input type="submit" value="Submit Entry">
+  </pre>
 </form>
 
 <!-- Add an additional blue button style -->
@@ -35,12 +47,12 @@ canvas {
    </div>
   </div>
 </div>
-
+</div>
 <canvas id="chart"></canvas>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
+ <script>
   $( document ).ready(function() {
     var anger = {{moods.anger}};
     var disgust = {{moods.disgust}};
@@ -150,3 +162,5 @@ YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
     });
 });
 </script>
+
+</body>

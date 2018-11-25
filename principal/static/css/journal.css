@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+body{
+  background-image: url("/static/images/rocks.jpg");
+}
+
+#wrapper{
+  margin: auto;
+   padding-top: 25px;
+  width: 1100px;
+  //border: 1px solid black;
+  overflow: hidden;
+}
+#id_entry_form{
+    height:200px;
+    width: 650px;
+    font-size:14pt;
+}
+#form{
+  padding-left: 20px;
+  padding-right: 70px;
+  width: 650px;
+  float:left; /* add this */
+  //border: 1px solid red;
+}
+#mycalendar{
+  float: left;
+  //border: 1px solid green;
+  overflow: hidden;
+}
+#chart{
+  padding-left: 75px;
+}
