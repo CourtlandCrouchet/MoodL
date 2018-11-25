@@ -14,14 +14,17 @@ body{
 #id_entry_form{
     height:200px;
     width: 650px;
-    font-size:14pt;
+    font-size:12pt;
+    margin-left: 20px;
+
 }
 #form{
   padding-left: 20px;
   padding-right: 70px;
   width: 650px;
-  float:left; /* add this */
+  float:left;
   //border: 1px solid red;
+  background-color: white;
 }
 #mycalendar{
   float: left;
@@ -30,4 +33,5 @@ body{
 }
 #chart{
   padding-left: 75px;
+  background-color: white;
 }

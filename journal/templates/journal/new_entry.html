@@ -12,11 +12,15 @@
 <!-- wrapper to get calendar and entry side by side-->
  <div id="wrapper">
 <form action="/journal/get_entry/" method="post" id="form">
-  <!--<label for="new_entry">How's it going?<br> </label>
+  {% csrf_token %}
+  <!--<textarea name="name" rows="8" cols="80"></textarea>
+  <input type="submit" value="Submit Entry">
+  <label for="new_entry">How's it going?<br> </label>
   <input id="new_entry" type="text" name="new_entry" value="{{
   current_entry }}">-->
-  {% csrf_token %}
+  <br>
   {{ form }}
+
   <br><pre>
   <input type="submit" value="Submit Entry">
   </pre>
@@ -58,19 +62,19 @@ canvas {
        datasets: [{
            label: "My First dataset",
            backgroundColor: [
-            'rgba(255, 99, 132,.6)',
-            'rgba(0,255,0,.4)',
-            'rgba(0,0,0,.4)',
-            'rgba(255,255,0,.6)',
-            'rgba(79,179,249,1)',
+            'rgba(255, 99, 132,.8)', //anger
+            'rgba(0,255,0,.6)', //disgust
+            'rgba(153,51,204,.7)', //fear
+            'rgba(255,255,0,.7)', //joy
+            'rgba(79,179,249,.9)', //sadness
             'rgb(0,255,255)',
             'rgb(255,0,255)',
           ],
            borderColor: [
-             'rgb(255, 99, 132)',
-             'rgb(0,255,0)',
              'rgb(0,0,0)',
-             'rgb(255,255,0)',
+             'rgb(0,0,0)',
+             'rgb(0,0,0)',
+             'rgb(0,0,0)',
              //'rgb(79,179,249)',
              'rgb(0,0,0)',
            ],
