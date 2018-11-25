@@ -14,7 +14,8 @@ body{
 #id_entry_form{
     height:200px;
     width: 650px;
-    font-size:14pt;
+    font-size:12pt;
+    margin-left: 20px;
 
 }
 #form{

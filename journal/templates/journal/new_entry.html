@@ -9,11 +9,15 @@
 <!-- wrapper to get calendar and entry side by side-->
  <div id="wrapper">
 <form action="/journal/get_entry/" method="post" id="form">
-  <!--<label for="new_entry">How's it going?<br> </label>
+  {% csrf_token %}
+  <!--<textarea name="name" rows="8" cols="80"></textarea>
+  <input type="submit" value="Submit Entry">
+  <label for="new_entry">How's it going?<br> </label>
   <input id="new_entry" type="text" name="new_entry" value="{{
   current_entry }}">-->
-  {% csrf_token %}
+  <br>
   {{ form }}
+
   <br><pre>
   <input type="submit" value="Submit Entry">
   </pre>
