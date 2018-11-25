@@ -35,8 +35,8 @@ def get_entry(request):
     else:
         form = EntryForm()
     user_id = request.user
-    data = serializers.serialize("python", Entries.objects.filter(pk = 2))
-    moods = Entries.objects.get(pk=2)
+    data = serializers.serialize("python", Entries.objects.filter(pk = 18))
+    moods = Entries.objects.get(pk=18)
     context = {
         'form': form,
         'data': data,
