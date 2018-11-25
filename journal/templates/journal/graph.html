@@ -31,7 +31,8 @@
   var c = 0;
 </script>
 <canvas id="chart"></canvas>
-<button id="line">Line</button>
+<button id="lineButton">Line</button>
+<button id="barButton">Bar</button>
 <h1>{{user_id}}</h1>
 <ul>
   {% for instance in data %}
@@ -59,32 +60,35 @@
 
     var chart = document.getElementById("chart");
     var ctx = chart.getContext("2d");
+    var labelArr = ['Anger','Disgust','Fear','Joy','Sadness'];
+    var bgColors = [
+      'rgba(255, 99, 132,.6)',
+      'rgba(0,255,0,.4)',
+      'rgba(0,0,0,.4)',
+      'rgba(255,255,0,.6)',
+      'rgba(79,179,249,1)',
+      'rgb(0,255,255)',
+      'rgb(255,0,255)',
+    ];
+    var borderColors = [
+      'rgb(255, 99, 132)',
+      'rgb(0,255,0)',
+      'rgb(0,0,0)',
+      'rgb(255,255,0)',
+      //'rgb(79,179,249)',
+      'rgb(0,0,0)',
+    ]
     var chartObj = new Chart(ctx, {
       // The type of chart we want to create
     type: 'bar',
 
     // The data for our dataset
     data: {
-       labels: ['Anger','Disgust','Fear','Joy','Sadness'],
+       labels: labelArr,
        datasets: [{
            label: "My First dataset",
-           backgroundColor: [
-            'rgba(255, 99, 132,.6)',
-            'rgba(0,255,0,.4)',
-            'rgba(0,0,0,.4)',
-            'rgba(255,255,0,.6)',
-            'rgba(79,179,249,1)',
-            'rgb(0,255,255)',
-            'rgb(255,0,255)',
-          ],
-           borderColor: [
-             'rgb(255, 99, 132)',
-             'rgb(0,255,0)',
-             'rgb(0,0,0)',
-             'rgb(255,255,0)',
-             //'rgb(79,179,249)',
-             'rgb(0,0,0)',
-           ],
+           backgroundColor: bgColors,
+           borderColor: borderColors,
            borderWidth: 2,
            data: [anger,disgust,fear,joy,sadness],
        }]
@@ -126,6 +130,26 @@
      chartObj.update();
    }
  };
+ document.getElementById("barButton").onclick = function(evt) {
+   chartObj.destroy();
+   chartObj = new Chart(ctx, {
+     // The type of chart we want to create
+     type: 'bar',
+
+     // The data for our dataset
+     data: {
+        labels: labelArr,
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: bgColors,
+            borderColor: borderColors,
+            borderWidth: 2,
+            data: [anger,disgust,fear,joy,sadness],
+        }]
+    },
+  });
+  chartObj.update();
+};
 });
 
 </script>
