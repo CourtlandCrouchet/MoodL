@@ -41,16 +41,16 @@ def new_entry(request):
         else:
             form = EntryForm()
             user_id = request.user
-            data = serializers.serialize("python", Entries.objects.filter(pk=1))
-            moods = Entries.objects.filter(user_ID="kzhang").latest("submission_date")
-            dates = Entries.objects.filter(user_ID="kzhang").values('submission_date')
-            context = {
-                'form': form,
-                'data': data,
-                'moods': moods,
-                'dates': dates,
-            }
-            return render(request, 'journal/new_entry.html', context)
+            data = serializers.serialize("python", Entries.objects.filter(pk = 2))
+            moods = Entries.objects.get(pk=2)
+            dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
+        context = {
+            'form': form,
+            'data': data,
+            'moods': moods,
+            'dates': dates,
+        }
+        return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
     # if 'request.user' in locals() or 'request.user' in globals()
     #     user_id = request.user

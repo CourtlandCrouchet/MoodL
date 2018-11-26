@@ -83,3 +83,6 @@ body{
   border-radius: 4px;
   padding: 6px 10px;
 }
+#old_text{
+  width: 650px !important;
+}
