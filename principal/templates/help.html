@@ -1,6 +1,58 @@
+<!-- templates/signup.html -->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <a class="btn btn-primary" href="/journal/new_entry" role="button">Back</a>
+    <title>MoodL-Help</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		#mainDiv{
+			background: url("/static/images/help.jpg");
+      background-repeat: no-repeat;
+      height: 500px;
+      width: auto;
+      margin: auto;
+		}
+	</style>
 </head>
-<title>MoodL-Help</title>
-<h1>Help page</h1>
+
+<body class="override">
+     <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">MoodL</a>
+            </div>
+            <div id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/journal/new_entry">Return to User Log</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <footer>
+        <div class="container">
+            <div class="row well ml-t">
+                <div class="col-lg-8 col-md-8">
+                    <h3>Need Help? </h3>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">COMING SOON !!!</div>
+                    	<div id= "mainDiv" >
+
+                    	</div>
+                </div>
+            </div>
+        </form>
+    </div>

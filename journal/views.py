@@ -20,22 +20,7 @@ def index(request): #OBSOLETE, used for reference
     return HttpResponse(template.render(context, request))
 
 def new_entry(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = EntryForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-        # process the data in form.cleaned_data as required
-            entry_text = form.cleaned_data['entry_form']
-            #user_id = user ID of the current session
-            user_id = request.user
-            #Use Entries create method to analyze and store the Entry
-            new_entry = Entries.create(entry_text, user_id)
-            # redirect to a new URL:
-            return HttpResponseRedirect('graph/'+str(new_entry.id))
-    # if a GET (or any other method) we'll create a blank form
-    else:
+
         # if this is a POST request we need to process the form data
         if request.method == 'POST':
             # create a form instance and populate it with data from the request:
@@ -55,14 +40,24 @@ def new_entry(request):
             form = EntryForm()
             user_id = request.user
             data = serializers.serialize("python", Entries.objects.filter(pk=1))
-            moods = Entries.objects.filter(user_ID=request.user).latest("submission_date")
-            dates = Entries.objects.filter(user_ID=request.user).values('submission_date')
-            context = {
-                'form': form,
-                'data': data,
-                'moods': moods,
-                'dates': dates,
-            }
+            try:
+                moods = Entries.objects.filter(user_ID=request.user).latest("submission_date")
+                dates = Entries.objects.filter(user_ID=request.user).values('submission_date')
+                context = {
+                    'form': form,
+                    'data': data,
+                    'moods': moods,
+                    'dates': dates,
+                }
+            except:
+                moods = Entries.objects.get(pk=13)
+                dates = [Entries.objects.get(pk=13).submission_date]
+                context = {
+                    'form': form,
+                    'data': data,
+                    'moods': moods,
+                    'dates': dates,
+                }
             return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
     # if 'request.user' in locals() or 'request.user' in globals()
@@ -103,11 +98,20 @@ def get_entry(request):
     template = loader.get_template('journal/get_entry.html')
     return HttpResponse(template.render(context,request))
 def get_spec_entry(request, timestamp):
+    set_date = datetime.fromtimestamp(timestamp/1000)
+    moods = Entries.objects.filter(user_ID=request.user).latest("submission_date")
+    context = {
+        'id': request.user,
+        'moods': moods,
+    }
+    template = loader.get_template('journal/get_entry.html')
+    return HttpResponse(template.render(context,request))
+def get_spec_entry(request, timestamp):
     set_date = datetime.fromtimestamp(timestamp/1000).date()
-    query_date = str(Entries.objects.filter(user_ID=request.user).get(pk=18).submission_date)
+    #query_date = str(Entries.objects.filter(user_ID=request.user).get(pk=18).submission_date)
     # query_date = query_date.date()
     print("Set_Date: " + str(set_date))
-    print("dates: " + str(Entries.objects.filter(user_ID=request.user).get(pk=18).submission_date))
+    #print("dates: " + str(Entries.objects.filter(user_ID=request.user).get(pk=18).submission_date))
     try:
         moods = Entries.objects.filter(user_ID=request.user).get(submission_date = set_date)
     except:
@@ -117,9 +121,9 @@ def get_spec_entry(request, timestamp):
             moods = moods.filter(submission_date = set_date)
             moods = moods.latest("pk")
         except:
-            return HttpResponseRedirect('../get_entry')
+            return HttpResponseRedirect('../../')
     if moods == None:
-        moods = Entries.objects.get(pk=18)
+        moods = Entries.objects.get(pk=13)
         return HttpResponseRedirect('../get_entry')
     else:
         context = {
