@@ -125,10 +125,12 @@ var i = 0;
   i++;
 {% endfor %}
 datepicker.disabledDates = datesArr;
-datepicker.onSelect = function(checked){
-var state = (checked)?'selected':'unselected';
-alert(this.toLocaleDateString() + ' ' + state);
-};
+// datepicker.onSelect = function(checked){
+//   console.log(this);
+//   var state = (checked)?'selected':'unselected';
+//   alert(this.toLocaleDateString() + ' ' + checked);
+//   window.location.replace('get_entry', {{ user_id }}, this.toLocaleDateString);
+// };
 </script>
 </div>
 </body>

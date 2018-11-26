@@ -16,7 +16,7 @@ def index(request): #OBSOLETE, used for reference
     }
     return HttpResponse(template.render(context, request))
 
-def get_entry(request):
+def new_entry(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -46,6 +46,10 @@ def get_entry(request):
     }
     return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
+    # if 'request.user' in locals() or 'request.user' in globals()
+    #     user_id = request.user
+    # else
+    # user_id = "courtland"
     user_id = request.user
     context = {
         'user_id': user_id,
@@ -63,3 +67,9 @@ def graph(request, id): #OBSOLETE, used for testing
         'data': data,
     }
     return HttpResponse(template.render(context, request))
+
+# def get_entry(request, id, date_str):
+#     form = EntryForm()
+#     print(date_str)
+#     return HttpResponseRedirect(submitted("GET"))
+    # moods = Entries.objects.get(submission_date = )
