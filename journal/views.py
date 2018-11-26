@@ -6,7 +6,7 @@ from django.shortcuts import render, render_to_response
 from datetime import *
 from .models import Entries
 from .forms import EntryForm
-
+from django.shortcuts import redirect
 from django.core import serializers
 
 
@@ -36,7 +36,7 @@ def new_entry(request):
                 # Use Entries create method to analyze and store the Entry
                 new_entry = Entries.create(entry_text, user_id)
                 # redirect to a new URL:
-                return HttpResponseRedirect('graph/'+str(new_entry.id))
+                return redirect('/journal/new_entry')
     # if a GET (or any other method) we'll create a blank form
         else:
             form = EntryForm()
