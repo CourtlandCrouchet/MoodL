@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
     <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
-    <!-- For JS file to rotate background pics
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap-theme.min.css">
-    <script type="text/javascript" src="../../static/js/homepage.js"></script>
-    -->
     <link rel="stylesheet" href="../../static/css/homeStyle.css">
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
             integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
@@ -52,11 +48,6 @@
         {% endif %}
 
         {% if request.user.is_authenticated %}
-            <!-- <form class="form-inline my-2 my-lg-0">
-                csrf_token
-                <a href="#" style="color: white" class="btn btn-danger my-2 my-sm-0" role="button" data-toggle="modal"
-                   data-target="#support-modal">Tickets</a>
-            </form> &nbsp -->
 
             <form action="{% url 'logout' %}" method="post" class="form-inline my-2 my-lg-0">
                 {% csrf_token %}
@@ -91,7 +82,6 @@
 </div>
 <div align="center" class="container" style="padding-top: 5%">
     {% if request.user.get_username %}
-        <h2 style="width: 50%"  id="header_menu">YOU HAVE LOGGED INTO MOODL, WELCOME!</h2>
         <br><br>
         {% if request.user.groups.all.0 %}
     <h1 align="center" id="header_menu"> Permissions: </h1>
@@ -103,7 +93,7 @@
 
     <!--<nav class="navbar fixed-bottom navbar-light bg-faded">
         <div class="container" align="center">
-            
+
         </div>
     </nav>
     -->

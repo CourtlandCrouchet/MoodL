@@ -6,20 +6,47 @@
 <!-- <img src="{% static "images/rocks.jpg" %}" alt="My image">
  -->
  <script src="{% static 'js/datepickk.min.js' %}"></script>
-
+ <title>MoodL-UserLog</title>
+    <style>
+        h2 {
+            color: #7c795d;
+            font-family: 'Trocchi', serif;
+            font-size: 45px;
+            font-weight: normal;
+            line-height: 48px;
+            margin: 0;
+        }
+    </style>
+            <form action="{% url 'logout' %}" method="post" class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                <button id= "submit" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+                <a id="help" class="btn btn-primary" href="/about" role="button">Help?</a>
+            </form>
 </head>
 <body>
-<!-- wrapper to get calendar and entry side by side-->
- <div id="wrapper">
-   <div style="background-color:white !important;" id="box">
-     <p style="backgroundColor:white">{{ moods.entry_text }}</p>
+  <!-- Random background-->
+      <script type="text/javascript">
+        var dir = '/static/images/';
+        var size = 4;
+        var dict = {
+          1: "wood.jpg",
+          2: "panels.jpg",
+          3: "water.jpg",
+          4: "rocks.jpg"};
+        var random= Math.floor(Math.random() * size) + 1;
+        document.body.style.backgroundImage="url(" + dir + dict[random] + ")";
+      </script>
+<div id="box">
+   <div id="form" style= "height: 400px">
+     <p>{{ moods.entry_text }}</p>
    </div>
+</div>
   <div id="calendar"></div>
-  </div>
+
 <style>
 canvas {
-  width: 600px !important;
-  height: 300px !important;
+  width: 400px !important;
+  height: 250px !important;
 }
 </style>
 
