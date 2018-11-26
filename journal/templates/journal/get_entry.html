@@ -23,7 +23,9 @@
                 <a id="help" class="btn btn-primary" href="/help" role="button">Help?</a>
 
             </form>
-    <button id="submit" class="btn btn-primary" href="/journal/new_entry" role="button">New Entry</button>
+            <form action="{% url 'new_entry' %}" method="get" class="form-inline my-2 my-lg-0">
+                <button id="submit" class="btn btn-primary" href="/journal/new_entry" role="button">New Entry</button>
+            </form>
 </head>
 <body>
   <!-- Random background-->
