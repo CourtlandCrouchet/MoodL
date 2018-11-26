@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views import generic
 
+
 def main_base_view(request):
     dictionary = dict(request=request)
     dictionary.update(csrf(request))
@@ -37,8 +38,12 @@ class signup(generic.CreateView):
     template_name = 'signup.html'
 
 
+def about(request):
+    return render(request, 'about.html')
 
 # this def is if you want to change the user's password
+
+
 def update_pwd(username, pwd):
     user_model = User.objects.get(username=username)
     user_model.set_password(pwd)
