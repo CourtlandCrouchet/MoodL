@@ -19,7 +19,7 @@ def index(request): #OBSOLETE, used for reference
     }
     return HttpResponse(template.render(context, request))
 
-def new_entry(request): 
+def new_entry(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:

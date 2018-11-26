@@ -38,6 +38,11 @@ def login(request):
 #this class will generate the signup page that django provides.
 #and after the user creates a new account, they will be linked to
 #the user log page (get_entry)
+#subclassing the generic class-based view CreateView in the signup class
+#we specify the use of the built-in UserCreationForm.
+#reverse_lazy because that for all generic class-based views the urls are
+#not loaded when the file is imported, so we use the lazy form of revers
+#rather than reverse.
 class signup(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('get_entry')
