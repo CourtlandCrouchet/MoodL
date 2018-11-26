@@ -135,7 +135,6 @@ var datepicker = new Datepickk();
 datepicker.inline = true;
 datepicker.container = document.getElementById("calendar");
 datepicker.show();
-datepicker.selectDate(new Date());
 datesArr = [];
 var i = 0;
 {% for val in dates %}
@@ -147,11 +146,11 @@ var i = 0;
   console.log(datesArr[i]);
   i++;
 {% endfor %}
-datepicker.disabledDates = datesArr;
+for(var i=0;i<datesArr.length;i++)
+  datepicker.selectDate(datesArr[i]);
 datepicker.onSelect = function(checked){
   console.log(this);
   var state = (checked)?'selected':'unselected';
-  alert(this.toLocaleDateString());
   window.location.replace('../get_entry/', this.toLocaleDateString);
 };
 </script>
