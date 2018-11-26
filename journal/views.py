@@ -2,11 +2,14 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from datetime import *
 from .models import Entries
 from .forms import EntryForm
 
 from django.core import serializers
+
+
 
 def index(request): #OBSOLETE, used for reference
     latest_entries_list = Entries.objects.order_by('-submission_date')[:5]
@@ -35,9 +38,9 @@ def new_entry(request):
     else:
         form = EntryForm()
     user_id = request.user
-    data = serializers.serialize("python", Entries.objects.filter(pk = 18))
-    moods = Entries.objects.filter(user_ID=user_id).latest("submission_date")
-    dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
+    data = serializers.serialize("python", Entries.objects.filter(pk = 1))
+    moods = Entries.objects.filter(user_ID="kzhang").latest("submission_date")
+    dates = Entries.objects.filter(user_ID = "kzhang").values('submission_date')
     context = {
         'form': form,
         'data': data,

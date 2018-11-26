@@ -13,19 +13,12 @@
             margin: 0;
         }
     </style>
- <font face="verdana" color="white">Welcome, {{ request.user.get_username}}</font>
-        {% if request.user.is_authenticated %}
             <form action="{% url 'logout' %}" method="post" class="form-inline my-2 my-lg-0">
                 {% csrf_token %}
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
             </form>
-        {% else %}
-            <form class="form-inline my-2 my-lg-0">
-                {% csrf_token %}
-                <a style="color:white" href="#" class="btn btn-primary my-2 my-sm-0" role="button" data-toggle="modal"
-                   data-target="#login-modal">Login</a>
-            </form>
-        {% endif %}
+<a class="btn btn-primary" href="/about" role="button">Help?</a>
+
 <link rel="stylesheet" href="{% static 'css/journal.css' %}">
 <link rel="stylesheet" href="{% static 'js/journal.js' %}">
 <link rel="stylesheet" href="{% static 'css/datepickk.min.css' %}">
