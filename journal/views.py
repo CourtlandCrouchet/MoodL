@@ -36,7 +36,7 @@ def new_entry(request):
         form = EntryForm()
     user_id = request.user
     data = serializers.serialize("python", Entries.objects.filter(pk = 18))
-    moods = Entries.objects.get(pk=18)
+    moods = Entries.objects.filter(user_ID=user_id).latest("submission_date")
     dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
     context = {
         'form': form,
@@ -69,10 +69,12 @@ def graph(request, id): #OBSOLETE, used for testing
     return HttpResponse(template.render(context, request))
 
 def get_entry(request):
-    id = 18
-    moods = Entries.objects.get(pk=18)
+    user_id = request.user
+    q = Entries.objects.filter(user_ID=user_id)
+    moods = q.latest('submission_date')
     form_txt = moods.entry_text
     context = {
+        'id': user_id,
         'moods': moods,
         'form_txt': form_txt,
     }

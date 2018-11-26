@@ -125,7 +125,7 @@ datepicker.onSelect = function(checked){
   console.log(this);
   var state = (checked)?'selected':'unselected';
   alert(this.toLocaleDateString());
-  window.location.replace('get_entry/'+this.toLocaleDateString());
+  window.location.replace('../get_entry/', this.toLocaleDateString);
 };
 </script>
 </div>
