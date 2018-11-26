@@ -21,7 +21,9 @@
                 {% csrf_token %}
                 <button id= "submit" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
                 <a id="help" class="btn btn-primary" href="/help" role="button">Help?</a>
+
             </form>
+    <button id="submit" class="btn btn-primary" href="/journal/new_entry" role="button">New Entry</button>
 </head>
 <body>
   <!-- Random background-->
@@ -140,7 +142,6 @@ datepicker.highlight = [highlight];
 /*Get highlight*/
 console.log(datepicker.highlight);
 datepicker.show();
-datepicker.selectDate(new Date());
 datesArr = [];
 var i = 0;
 {% for val in dates %}
@@ -151,8 +152,9 @@ var i = 0;
   console.log(datesArr[i]);
   i++;
 {% endfor %}
-// datepicker.disabledDates = datesArr;
-datepicker.onSelect = function(checked){
+for(var i=0;i<datesArr.length;i++)
+  datepicker.selectDate(datesArr[i]);
+ datepicker.onSelect = function(checked){
   // console.log("this: "+this);
   // var date = new Date(this.toLocaleDateString());
   var state = (checked)?'selected':'unselected';
