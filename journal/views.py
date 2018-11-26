@@ -35,9 +35,9 @@ def new_entry(request):
     else:
         form = EntryForm()
     user_id = request.user
-    data = serializers.serialize("python", Entries.objects.filter(pk = 18))
-    moods = Entries.objects.filter(user_ID=user_id).latest("submission_date")
-    dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
+    data = serializers.serialize("python", Entries.objects.filter(pk = 1))
+    moods = Entries.objects.filter(user_ID="kzhang").latest("submission_date")
+    dates = Entries.objects.filter(user_ID = "kzhang").values('submission_date')
     context = {
         'form': form,
         'data': data,
