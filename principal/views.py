@@ -50,7 +50,10 @@ class signup(generic.CreateView):
 
 #this links the user to the about page.
 def about(request):
-    return render(request, 'about.html')
+    if request.user.id == None:
+        return HttpResponseRedirect('..')
+    else:
+        return render(request, 'help.html')
 
 # this def is if you want to change the user's password
 
