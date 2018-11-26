@@ -68,7 +68,7 @@ def logout_view(request):
     logout(request)
     dictionary = dict(request=request)
     dictionary.update(csrf(request))
-    return render_to_response('main/main_base.html', dictionary)
+    return HttpResponseRedirect('..')
 
 
 class Messages:

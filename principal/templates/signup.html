@@ -1,12 +1,85 @@
 <!-- templates/signup.html -->
-
-<title>MoodL-Sign Up</title>
-
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MoodL-SignUp</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class="override">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">MoodL</a>
+            </div>
+            <div id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="..">Return to Homepage</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <footer>
+        <div class="container">
+            <div class="row well ml-t">
+                <div class="col-lg-8 col-md-8">     
+                    <h4>SIGN UP </h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">*All Fields are required!</div>
+                    <div class="panel-body" class="col-md-6">
+                        <form method="post">
+							<form method="POST">
+								{% csrf_token %}
+								<div class="col-md-2">
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="email" name="email" class="form-control" required="required">
+									</div>
+									<!-- form input area -->
+									<div class="form-group">
+										<label for="username">Username</label>
+										<input type="username" name="username" class="form-control" required="required"/>
+										<ul>
+											<li>Your username must be between 4 - 15 characters in length. Letters, digits and @/./+/-/_ only.</li>
+										</ul>
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input type="password" name="password" class="form-control" required="required"/>
+										<ul>
+											<li>Your password must contain at least 8 characters.</li>
+											<li>Your password must contain at least one uppercase and one lowercase character.</li>
+											<li>Your password must contain at least one number but cannot be entirely numeric.</li>
+										</ul>
+									</div>
+									<div class="form-group">
+										<label for="rpassword">Re-enter Password</label>
+										<input type="password" name="rpassword" class="form-control" required="required"/>
+									</div>
+									<br />
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary form-control">Sign Up</button>
+									</div>
+								</div>
+							</form>
+  						</form>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>

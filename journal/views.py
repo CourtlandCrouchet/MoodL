@@ -6,7 +6,7 @@ from django.shortcuts import render, render_to_response
 from datetime import *
 from .models import Entries
 from .forms import EntryForm
-
+from django.shortcuts import redirect
 from django.core import serializers
 
 
@@ -36,18 +36,34 @@ def new_entry(request):
             return HttpResponseRedirect('graph/'+str(new_entry.id))
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = EntryForm()
-    user_id = request.user
-    data = serializers.serialize("python", Entries.objects.filter(pk = 1))
-    moods = Entries.objects.filter(user_ID="kzhang").latest("submission_date")
-    dates = Entries.objects.filter(user_ID = "kzhang").values('submission_date')
-    context = {
-        'form': form,
-        'data': data,
-        'moods': moods,
-        'dates': dates,
-    }
-    return render(request, 'journal/new_entry.html', context)
+        # if this is a POST request we need to process the form data
+        if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
+            form = EntryForm(request.POST)
+            # check whether it's valid:
+            if form.is_valid():
+                # process the data in form.cleaned_data as required
+                entry_text = form.cleaned_data['entry_form']
+                # user_id = user ID of the current session
+                user_id = request.user
+                # Use Entries create method to analyze and store the Entry
+                new_entry = Entries.create(entry_text, user_id)
+                # redirect to a new URL:
+                return redirect('/journal/new_entry')
+    # if a GET (or any other method) we'll create a blank form
+        else:
+            form = EntryForm()
+            user_id = request.user
+            data = serializers.serialize("python", Entries.objects.filter(pk=1))
+            moods = Entries.objects.filter(user_ID="kzhang").latest("submission_date")
+            dates = Entries.objects.filter(user_ID="kzhang").values('submission_date')
+            context = {
+                'form': form,
+                'data': data,
+                'moods': moods,
+                'dates': dates,
+            }
+            return render(request, 'journal/new_entry.html', context)
 def submitted(request): #OBSOLETE, used for testing
     # if 'request.user' in locals() or 'request.user' in globals()
     #     user_id = request.user

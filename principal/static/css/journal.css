@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 body{
-  background-image: url("/static/images/rocks.jpg");
+  //background-image: url("/static/images/panels.jpg");
 }
 
 #wrapper{
@@ -11,37 +11,45 @@ body{
   //border: 1px solid black;
   overflow: hidden;
 }
-#id_entry_form{
-    height:200px;
-    width: 650px;
-    font-size:12pt;
-    margin-left: 10px;
-    font-family: "Helvetica";
 
-}
 #box{
-  padding-left: 10px;
-  padding-right: 70px;
-  width: 650px;
   float:left;
+  padding-left: 2%;
+  padding-top: 2%;
+  width: 782px;
+  height: 600px;
   //border: 1px solid red;
 
 }
 #form{
-  padding-left: 5px;
+  padding-left: 3%;
+  padding-right: 2%;
+  //padding-top: 2%;
   width: 680px;
   background-color: white;
   font-family: "Helvetica";
 }
+#id_entry_form{
+    height:400px;
+    width: 650px;
+    font-size:14pt;
+    margin-left: 2%;
+    font-family: "Helvetica";
+
+}
 #calendar{
   float: right;
+  padding-right: 6%;
+  padding-bottom: 1%;
   //border: 1px solid green;
   overflow: hidden;
-  width: 350px;
-  height: 350px;
+  width: 330px !important;
+  height: 300px !important;
 }
 #chartArea{
-  padding-left: 75px;
+
+  padding-right: 3%;
+  padding-top: 3%
 
 }
 #chart{
@@ -61,4 +69,17 @@ body{
   padding: 9px 20px;
   background-color: white;
   color: black;
+}
+#help{
+  float: right;
+  border: 2px solid #008CBA;
+  border-radius: 4px;
+  padding: 6px 10px;
+  background-color: white;
+  transition-duration: 0.4s;
+}
+#help:hover{
+  background-color: #008CBA;
+  border-radius: 4px;
+  padding: 6px 10px;
 }
