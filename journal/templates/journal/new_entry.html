@@ -12,7 +12,7 @@
 <!-- wrapper to get calendar and entry side by side-->
  <div id="wrapper">
    <div id="box">
-     <form action="/journal/get_entry/" method="post" id="form">
+     <form action="/journal/new_entry/" method="post" id="form">
        {% csrf_token %}
        <br>
        {{ form }}
