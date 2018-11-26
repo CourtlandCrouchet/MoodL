@@ -68,8 +68,19 @@ def graph(request, id): #OBSOLETE, used for testing
     }
     return HttpResponse(template.render(context, request))
 
+def get_entry(request):
+    id = 18
+    moods = Entries.objects.get(pk=18)
+    form_txt = moods.entry_text
+    context = {
+        'moods': moods,
+        'form_txt': form_txt,
+    }
+    template = loader.get_template('journal/get_entry.html')
+    return HttpResponse(template.render(context,request))
 # def get_entry(request, id, date_str):
 #     form = EntryForm()
-#     print(date_str)
-#     return HttpResponseRedirect(submitted("GET"))
-    # moods = Entries.objects.get(submission_date = )
+#     set_date = datetime.strptime(date_str, "%m/%d/%Y")
+#     print(set_date)
+#     return HttpResponseRedirect(submitted(request))
+#     #moods = Entries.objects.get(submission_date = )

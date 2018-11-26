@@ -11,14 +11,8 @@
 <body>
 <!-- wrapper to get calendar and entry side by side-->
  <div id="wrapper">
-   <div id="box">
-     <form action="/journal/new_entry/" method="post" id="form">
-       {% csrf_token %}
-       <br>
-       {{ form }}
-       <pre>   <input id = "submit" type="submit" value="Submit Entry">
-       </pre>
-     </form>
+   <div style="background-color:white !important;" id="box">
+     <p style="backgroundColor:white">{{ moods.entry_text }}</p>
    </div>
   <div id="calendar"></div>
   </div>
