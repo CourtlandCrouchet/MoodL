@@ -2,11 +2,14 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 from .models import Entries
 from .forms import EntryForm
 
 from django.core import serializers
+
+
 
 def index(request): #OBSOLETE, used for reference
     latest_entries_list = Entries.objects.order_by('-submission_date')[:5]
@@ -16,7 +19,7 @@ def index(request): #OBSOLETE, used for reference
     }
     return HttpResponse(template.render(context, request))
 
-def new_entry(request):
+def new_entry(request): 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
