@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
 from django.shortcuts import render, render_to_response
-
+from datetime import *
 from .models import Entries
 from .forms import EntryForm
 
@@ -89,9 +89,13 @@ def get_entry(request):
     }
     template = loader.get_template('journal/get_entry.html')
     return HttpResponse(template.render(context,request))
-# def get_entry(request, id, date_str):
-#     form = EntryForm()
-#     set_date = datetime.strptime(date_str, "%m/%d/%Y")
-#     print(set_date)
-#     return HttpResponseRedirect(submitted(request))
-#     #moods = Entries.objects.get(submission_date = )
+def get_spec_entry(request, timestamp):
+    set_date = datetime.fromtimestamp(timestamp/1000)
+    moods = Entries.objects.filter(user_ID=request.user).latest("submission_date")
+    context = {
+        'id': request.user,
+        'moods': moods,
+    }
+    template = loader.get_template('journal/get_entry.html')
+    return HttpResponse(template.render(context,request))
+    #moods = Entries.objects.get(submission_date = )
