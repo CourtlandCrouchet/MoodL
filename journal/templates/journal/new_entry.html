@@ -12,24 +12,19 @@
 <!-- wrapper to get calendar and entry side by side-->
  <div id="wrapper">
    <div id="box">
-   <form action="/journal/get_entry/" method="post" id="form">
-    {% csrf_token %}
-    <br>
-    {{ form }}
-    <pre>   <input id = "submit" type="submit" value="Submit Entry">
-    </pre>
-  </form>
+     <form action="/journal/get_entry/" method="post" id="form">
+       {% csrf_token %}
+       <br>
+       {{ form }}
+       <pre>   <input id = "submit" type="submit" value="Submit Entry">
+       </pre>
+     </form>
+   </div>
   <div id="calendar"></div>
-</div>
-<!-- Add an additional blue button style -->
+  </div>
 <style>
-#calendar {
-  float: right;
-  width: 400px;
-  height: 400px;
-}
 canvas {
-  width: 500px !important;
+  width: 600px !important;
   height: 300px !important;
 }
 </style>
@@ -105,6 +100,7 @@ canvas {
     },
  });
 });
+
 </script>
 
 <script type="text/javascript">
