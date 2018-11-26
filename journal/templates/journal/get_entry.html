@@ -101,12 +101,17 @@ canvas {
 var datepicker = new Datepickk();
 datepicker.inline = true;
 datepicker.container = document.getElementById("calendar");
+// /*Set highlight*/
+// datepicker.highlight = [highlight,highlight2];
+//
+// /*Get highlight*/
+// console.log(datepicker.highlight);
 datepicker.show();
 datepicker.selectDate(new Date());
 datesArr = [];
 var i = 0;
 {% for val in dates %}
-  // console.log("date: " + "{{val.submission_date}}");
+  console.log("date: " + "{{val.submission_date}}");
   var dateStr = "{{ val.submission_date }}".replace(/,/g, '');
   dateStr = dateStr.split(' ');
   dateStr[0] = getMonthFromString(dateStr[0]);

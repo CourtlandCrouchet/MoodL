@@ -73,10 +73,13 @@ def get_entry(request):
     q = Entries.objects.filter(user_ID=user_id)
     moods = q.latest('submission_date')
     form_txt = moods.entry_text
+    dates = Entries.objects.filter(user_ID = user_id).values('submission_date')
+
     context = {
         'id': user_id,
         'moods': moods,
         'form_txt': form_txt,
+        'dates': dates,
     }
     template = loader.get_template('journal/get_entry.html')
     return HttpResponse(template.render(context,request))
